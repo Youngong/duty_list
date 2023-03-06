@@ -1,3 +1,5 @@
+var SqlString = require('sqlstring');
+
 function getsql(url, post){
     sqlString = "";
     
@@ -13,16 +15,16 @@ function getsql(url, post){
 
     //2、get the op
     if(url == "/api/add"){
-        sqlString = 'INSERT INTO myduty (user_id, title) VALUES (\'' + uid + '\',\'' + title + '\')';
+        sqlString = SqlString.format('INSERT INTO myduty (user_id, title) VALUES (?,?)',[uid, title]);
     }
     if(url == "/api/update"){
-        sqlString = 'update myduty set title = \'' + title + '\' where id =  \'' + duty_id + '\'';
+        sqlString = SqlString.format('update myduty set title = ? where id = ?',[title, duty_id]);
     }
     if(url == "/api/delete"){
-        sqlString = 'delete from myduty where id =  \'' + duty_id + '\'';
+        sqlString = SqlString.format('delete from myduty where id = ?',[duty_id]);
     }
     if(url == "/api/query"){
-        sqlString = 'SELECT * from myduty where user_id = \'' + uid + '\'';
+        sqlString = SqlString.format('SELECT * from myduty where user_id = ?',[uid]);
     }
 
     return sqlString;

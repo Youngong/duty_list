@@ -9,7 +9,7 @@ In the project directory, you can run:
 ### `npm install`
 install the dependencies at the first time
 
-### `npm server.js`
+### `node server.js`
 Runs the service(default:listenning to port 8888, you can modify it in ./src/server.js)
 
 ### `npm run test`
